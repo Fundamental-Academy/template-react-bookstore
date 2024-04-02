@@ -6,23 +6,19 @@ import { AuthLayout } from "./modules/layouts/auth-layout";
 import { AdminLayout } from "./modules/layouts/admin-layout";
 
 // Client Pages
-import { HomePage } from "./pages/client/home";
-import PageBookDetail from "./pages/client/book-detail";
+import { HomePage, loader as HomeLoader } from "./pages/client/home";
+import PageBookDetail, {
+  loader as BookDetailLoader,
+} from "./pages/client/book-detail";
 
 // Auth Pages
 import { PageLogin } from "./pages/auth/login";
-import { PageRegister } from "./pages/auth/register";
 
 // Admin Book Pages
 import PageAdminBookList from "./pages/admin/book/list";
 import PageAdminBookCreate from "./pages/admin/book/create";
 import PageAdminBookEdit from "./pages/admin/book/edit";
 import PageAdminBookDetail from "./pages/admin/book/detail";
-
-// Admin Category Pages
-import PageAdminCategoryList from "./pages/admin/category/list";
-import PageAdminCategoryCreate from "./pages/admin/category/create";
-import PageAdminCategoryEdit from "./pages/admin/category/edit";
 
 // Not Found Page
 import { PageNotFound } from "./pages/not-found";
@@ -35,10 +31,12 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        loader: HomeLoader,
       },
       {
         path: "book/:id",
         element: <PageBookDetail />,
+        loader: BookDetailLoader,
       },
     ],
   },
@@ -49,10 +47,6 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <PageLogin />,
-      },
-      {
-        path: "register",
-        element: <PageRegister />,
       },
     ],
   },
@@ -79,24 +73,6 @@ export const routes = createBrowserRouter([
           {
             path: ":id/detail",
             element: <PageAdminBookDetail />,
-          },
-        ],
-      },
-      {
-        path: "category",
-        element: <Outlet />,
-        children: [
-          {
-            index: true,
-            element: <PageAdminCategoryList />,
-          },
-          {
-            path: "create",
-            element: <PageAdminCategoryCreate />,
-          },
-          {
-            path: ":id/edit",
-            element: <PageAdminCategoryEdit />,
           },
         ],
       },

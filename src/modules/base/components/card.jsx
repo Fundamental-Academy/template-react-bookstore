@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 
-export function BookCard() {
+export function BookCard({ title, summary, imageSrc, price, link }) {
   return (
     <Card
       shadow="sm"
@@ -11,26 +11,23 @@ export function BookCard() {
       style={{ width: "320px" }}
     >
       <Card.Section>
-        <Image
-          src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550778669i/44083363.jpg"
-          height={160}
-          alt="Norway"
-        />
+        <Image src={imageSrc} height={160} alt="Norway" />
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Bukan Sarjana Kertas</Text>
-        <Badge color="pink">Rp 50.000</Badge>
+        <Text fw={500}>{title}</Text>
+        <Badge color="pink">
+          Rp {Intl.NumberFormat("id-ID").format(price)}{" "}
+        </Badge>
       </Group>
 
       <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes
-        with tours and activities on and around the fjords of Norway
+        {summary}
       </Text>
 
       <Button
         component={Link}
-        to="/book/1"
+        to={link}
         color="blue"
         fullWidth
         mt="md"

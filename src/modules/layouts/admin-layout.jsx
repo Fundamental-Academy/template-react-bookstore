@@ -2,11 +2,18 @@ import { AppShell, Box, Container, Text } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { useDisclosure } from "@mantine/hooks";
 
 export function AdminLayout() {
+  const [opened, { toggle }] = useDisclosure(false);
+
   return (
-    <AppShell header={{ height: 60 }} padding="md">
-      <Header />
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{ width: 300, breakpoint: "xs", collapsed: { mobile: !opened } }}
+      padding="md"
+    >
+      <Header opened={opened} toggle={toggle} />
 
       <AppShell.Main style={{ padding: 0 }}>
         <Box
@@ -23,7 +30,7 @@ export function AdminLayout() {
           }}
           component="div"
         >
-          <Text size={28} fw={700} c="white">
+          <Text size={28} lh={"sm"} fw={700} c="white">
             Admin Fundamental Bookstore
           </Text>
         </Box>

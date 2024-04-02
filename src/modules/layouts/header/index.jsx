@@ -15,7 +15,6 @@ const links = [
   { link: "/", label: "Home" },
   { link: "/about", label: "About" },
   { link: "/admin/book", label: "Book" },
-  { link: "/admin/category", label: "Category" },
 ];
 
 export function Header({ opened, toggle }) {
@@ -70,24 +69,16 @@ export function Header({ opened, toggle }) {
             ))}
 
             <Group>
-              <Button component={Link} to="/auth" variant="default">
+              <Button component={Link} to="/auth">
                 Log in
-              </Button>
-
-              <Button component={Link} to="/auth/register">
-                Register
               </Button>
             </Group>
           </Box>
         </AppShell.Navbar>
 
-        <Group>
-          <Button component={Link} to="/auth" variant="default">
+        <Group visibleFrom="xs">
+          <Button component={Link} to="/auth">
             Log in
-          </Button>
-
-          <Button component={Link} to="/auth/register">
-            Register
           </Button>
         </Group>
 
