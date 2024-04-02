@@ -12,7 +12,7 @@ import PageBookDetail, {
 } from "./pages/client/book-detail";
 
 // Auth Pages
-import { PageLogin } from "./pages/auth/login";
+import { PageLogin, action as AuthLoginAction } from "./pages/auth/login";
 
 // Admin Book Pages
 import PageAdminBookList from "./pages/admin/book/list";
@@ -47,6 +47,7 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <PageLogin />,
+        action: AuthLoginAction,
       },
     ],
   },
