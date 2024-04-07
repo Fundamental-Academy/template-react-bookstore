@@ -1,4 +1,4 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { Outlet, createBrowserRouter, Navigate } from "react-router-dom";
 
 // Layouts
 import { ClientLayout } from "./modules/layouts/client-layout";
@@ -12,7 +12,7 @@ import PageBookDetail, {
 } from "./pages/client/book-detail";
 
 // Auth Pages
-import { PageLogin, action as AuthLoginAction } from "./pages/auth/login";
+import { PageLogin } from "./pages/auth/login";
 
 // Admin Book Pages
 import PageAdminBookList from "./pages/admin/book/list";
@@ -47,7 +47,6 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <PageLogin />,
-        action: AuthLoginAction,
       },
     ],
   },
@@ -55,6 +54,10 @@ export const routes = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,
     children: [
+      {
+        path: "",
+        element: <Navigate to="/admin/book" replace />,
+      },
       {
         path: "book",
         element: <Outlet />,

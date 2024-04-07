@@ -1,5 +1,5 @@
 import { AppShell, Box, Container, Text } from "@mantine/core";
-import { Outlet } from "react-router-dom";
+import { Outlet, redirect } from "react-router-dom";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { useDisclosure } from "@mantine/hooks";
